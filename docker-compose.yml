@@ -1,0 +1,10 @@
+services:
+  reminder-bot:
+    build: .
+    container_name: wika-reminders
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - CHAT_ID=${CHAT_ID}
+    env_file:
+      - .env
