@@ -9,10 +9,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Config - get from environment variables with fallback to defaults
-MESSAGE = "🔔 Przypomnienie!"
-INTERVAL_MINUTES = 10
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 CHAT_ID = os.getenv('CHAT_ID')
+
+# Const
+INTERVAL_MINUTES = 10
 
 def send_telegram_message(message):
     url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage'
@@ -34,7 +35,7 @@ def main():
     print("⏳ Bot uruchomiony.")
     while True:
         if is_within_active_hours():
-            success = send_telegram_message(MESSAGE)
+            success = send_telegram_message("🔔 Przypomnienie!")
             print(f"[{datetime.now(warsaw_tz)}] Wysłano: {success}")
         else:
             print(f"[{datetime.now(warsaw_tz)}] Poza godzinami – brak powiadomienia.")
