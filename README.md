@@ -56,3 +56,25 @@ python app.py
 |----------|-------------|---------|
 | BOT_TOKEN | Telegram Bot Token | (required) |
 | CHAT_ID | Telegram Chat ID | (required) |
+
+## Application Behavior
+
+### Active Hours
+
+The application only sends reminders during active hours (7:00 - 22:00) based on Warsaw timezone (Europe/Warsaw). This ensures that reminders are only sent during appropriate hours regardless of the server's local timezone.
+
+## Troubleshooting
+
+### Print statements not visible in Docker logs
+
+If you can't see the print statements in the Docker logs, it's because Python buffers its output when running in a non-interactive environment like a Docker container. The Dockerfile has been configured to run Python with the `-u` flag (unbuffered mode) to solve this issue:
+
+```
+CMD ["python", "-u", "app.py"]
+```
+
+This ensures that all print statements appear immediately in the logs, which you can view with:
+
+```bash
+docker logs wika-reminders
+```
