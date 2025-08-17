@@ -13,7 +13,7 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 CHAT_ID = os.getenv('CHAT_ID')
 
 # Const
-INTERVAL_MINUTES = 10
+INTERVAL_MINUTES = 60
 
 def send_telegram_message(message):
     url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage'
@@ -28,7 +28,7 @@ def send_telegram_message(message):
 def is_within_active_hours():
     warsaw_tz = pytz.timezone('Europe/Warsaw')
     now = datetime.now(warsaw_tz)
-    return 7 <= now.hour <= 22
+    return 7 <= now.hour <= 21
 
 def main():
     warsaw_tz = pytz.timezone('Europe/Warsaw')
