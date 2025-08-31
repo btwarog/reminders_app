@@ -32,7 +32,7 @@ def is_within_active_hours():
 
 def main():
     warsaw_tz = pytz.timezone('Europe/Warsaw')
-    print("⏳ Bot uruchomiony.")
+    print("⏳ Bot uruchomiony. 1.1")
     while True:
         if is_within_active_hours():
             success = send_telegram_message("🔔 Przypomnienie!")
